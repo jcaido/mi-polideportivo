@@ -8,9 +8,9 @@ import { MaterialModule } from '../Material.Module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,10 @@ import { UserComponent } from './user/user.component';
     NavbarComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent,
     AdminComponent,
-    UserComponent
+    AdminComponent,
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
