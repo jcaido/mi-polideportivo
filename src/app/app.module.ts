@@ -9,7 +9,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
@@ -22,7 +21,6 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     RegisterComponent,
     AdminComponent,
     AdminComponent,
-    UserComponent,
     LoginComponent,
     BoardUserComponent,
     BoardAdminComponent
