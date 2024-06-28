@@ -23,7 +23,7 @@ export class AuthService {
         password
       },
       httOptions
-    )
+    );
   }
 
   register(username: string, email: string, password: string) :Observable<any> {
@@ -35,6 +35,10 @@ export class AuthService {
        password
       },
       httOptions
-    )
+    );
+  }
+
+  logout() :Observable<any> {
+    return this.http.get(AUTH_API + "signout", httOptions);
   }
 }
