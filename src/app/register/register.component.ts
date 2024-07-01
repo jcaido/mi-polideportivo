@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,10 @@ import { Validators, FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent {
 
-  constructor(private fb: FormBuilder) {}
+  errorMessage = '';
+
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
+
 
   formularioRegistro = this.fb.group({
     nombre: ['', Validators.required],
@@ -17,7 +21,21 @@ export class RegisterComponent {
   })
 
   submit() {
+    console.log(this.formularioRegistro.value!);
 
+    this.authService.register(
+      this.formularioRegistro.value.nombre!,
+      this.formularioRegistro.value.email!,
+      this.formularioRegistro.value.password!
+    ).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        console.log(this.errorMessage);
+      }
+    })
   }
 
 }
