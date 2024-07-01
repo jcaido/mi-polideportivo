@@ -1,12 +1,28 @@
-<div class="container">
-  <mat-form-field>
-    <input matInput type="text" placeholder="Introduzca nombre de usuario">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Introduzca email">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Introduzca password">
-  </mat-form-field>
-  <button mat-raised-button color="primary">Enviar</button>
-</div>
+<form [formGroup]="formularioRegistro" (ngSubmit)="submit()">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>nombre de usuario</mat-label>
+        <input matInput type="text" formControlName="nombre" required>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>email</mat-label>
+        <input matInput type="email" formControlName="email" required >
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>password</mat-label>
+        <input matInput type="password" formControlName="password" required>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <button mat-raised-button color="primary" type="submit">Confirmar</button>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+
+
