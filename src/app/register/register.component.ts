@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {merge} from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent {
 
-  errorMessage = '';
+  errorMessageServe = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
-
   formularioRegistro = this.fb.group({
     nombre: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   })
 
@@ -32,8 +34,8 @@ export class RegisterComponent {
         console.log(data);
       },
       error: err => {
-        this.errorMessage = err.error.message;
-        console.log(this.errorMessage);
+        this.errorMessageServe = err.error.message;
+        console.log(this.errorMessageServe);
       }
     })
   }
