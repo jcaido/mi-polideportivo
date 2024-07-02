@@ -1,18 +1,17 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {Component, } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {merge} from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
-  errorMessageServe = '';
+  isSuccessful: boolean = false;
+  isSignUpFailed: boolean = false;
+  errorMessageServe: string = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -22,22 +21,20 @@ export class RegisterComponent {
     password: ['', Validators.required]
   })
 
-  submit() {
-    console.log(this.formularioRegistro.value!);
-
+  onSubmit(): void {
     this.authService.register(
       this.formularioRegistro.value.nombre!,
       this.formularioRegistro.value.email!,
       this.formularioRegistro.value.password!
     ).subscribe({
       next: data => {
-        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
       },
       error: err => {
         this.errorMessageServe = err.error.message;
-        console.log(this.errorMessageServe);
+        this.isSignUpFailed = true;
       }
-    })
+    });
   }
-
 }
