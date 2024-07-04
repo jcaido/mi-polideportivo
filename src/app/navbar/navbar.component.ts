@@ -9,9 +9,21 @@ import { StorageService } from '../_services/storage.service';
 })
 export class NavbarComponent {
 
+  roles: string[] = [];
+  isLoggedIn: boolean = false;
+
   constructor(private authService: AuthService, private storageService: StorageService) {}
 
-  logout() :void {
+  ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    if(this.isLoggedIn) {
+      const user: any = this.storageService.getUser();
+      this.roles = user.roles;
+    }
+  }
+
+  logout(): void {
     this.authService.logout().subscribe({
       next: res => {
         console.log(res);
