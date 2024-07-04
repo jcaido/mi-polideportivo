@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Facility } from '../_helpers/facility';
 
 const FACILITY_API = 'http://localhost:8080/api/facility/';
 
@@ -16,6 +17,6 @@ export class FacilityService {
   constructor(private http: HttpClient) { }
 
   getAllFacilities() :Observable<any> {
-    return this.http.get(FACILITY_API + "facilities", httOptions);
+    return this.http.get<Facility>(FACILITY_API + "facilities", httOptions);
   }
 }

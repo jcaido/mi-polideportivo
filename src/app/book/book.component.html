@@ -1,1 +1,7 @@
-<p>book works!</p>
+@for (facility of facilities; track facility.id) {
+  <div>
+    <p>{{facility.id}}</p>
+    <p>{{facility.nameFacility}}</p>
+    <p>{{facility.urlPhoto}}</p>
+  </div>
+}
