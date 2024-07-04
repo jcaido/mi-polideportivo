@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { InformationComponent } from './information/information.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     AdminComponent,
     LoginComponent,
     BoardUserComponent,
-    BoardAdminComponent
+    BoardAdminComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
