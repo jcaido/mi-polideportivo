@@ -11,6 +11,7 @@ export class NavbarComponent {
 
   roles: string[] = [];
   isLoggedIn: boolean = false;
+  showAdminBoard: boolean = false;
 
   constructor(private authService: AuthService, private storageService: StorageService) {}
 
@@ -20,6 +21,7 @@ export class NavbarComponent {
     if(this.isLoggedIn) {
       const user: any = this.storageService.getUser();
       this.roles = user.roles;
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
     }
   }
 

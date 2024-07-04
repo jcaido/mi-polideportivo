@@ -9,6 +9,12 @@
     <button routerLink="register" mat-button>Register</button>
     <button routerLink="login" mat-button>Login</button>
   } @else {
-    <button mat-button (click)="logout()">Logout</button>
+    @if (showAdminBoard) {
+      <button routerLink="register" mat-button>Register</button>
+      <button routerLink="login" mat-button>Login</button>
+      <button mat-button (click)="logout()">Logout</button>
+    } @else {
+      <button mat-button (click)="logout()">Logout</button>
+    }
   }
 </mat-toolbar>
