@@ -14,6 +14,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { InformationComponent } from './information/information.component';
 import { BookComponent } from './book/book.component';
+import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BookComponent } from './book/book.component';
     BoardUserComponent,
     BoardAdminComponent,
     InformationComponent,
-    BookComponent
+    BookComponent,
+    MyBookingsComponent
   ],
   imports: [
     BrowserModule,

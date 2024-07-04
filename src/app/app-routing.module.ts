@@ -7,6 +7,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { InformationComponent } from './information/information.component';
 import { BookComponent } from './book/book.component';
+import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'information', component: InformationComponent },
-  { path: 'book', component: BookComponent }
+  { path: 'book', component: BookComponent },
+  { path: 'myBookings', component: MyBookingsComponent }
 ];
 
 @NgModule({
