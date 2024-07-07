@@ -1,1 +1,4 @@
-<p>calendar works!</p>
+<mat-card class="calendar-card">
+  <mat-calendar [(selected)]="selected" [dateFilter]="dateFilter"></mat-calendar>
+</mat-card>
+<p>Selected Date: {{ seleccionarFecha() }}</p>
