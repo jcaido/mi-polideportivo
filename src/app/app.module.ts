@@ -15,6 +15,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { InformationComponent } from './information/information.component';
 import { BookComponent } from './book/book.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MyBookingsComponent } from './my-bookings/my-bookings.component';
     BoardAdminComponent,
     InformationComponent,
     BookComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
