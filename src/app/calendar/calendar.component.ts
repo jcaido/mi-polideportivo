@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
@@ -10,14 +10,15 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class CalendarComponent {
 
+  @Input() idFacility?: string;
+
   selected: Date | null = null;
   date: any;
 
-  disabledDates = [
+  availableDates: Date[] = [
     new Date(2024, 6, 3),
     new Date(2024, 6, 12),
     new Date(2024, 6, 20),
-    // agrega más fechas aquí
   ];
 
   seleccionarFecha () {
@@ -30,7 +31,7 @@ export class CalendarComponent {
       return true;
     }
     const time = date.getTime();
-    return !this.disabledDates.some(d => d.getTime() === time);
+    return this.availableDates.some(d => d.getTime() === time);
   }
 
 }
