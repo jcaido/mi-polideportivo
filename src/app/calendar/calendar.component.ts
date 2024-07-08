@@ -31,6 +31,7 @@ export class CalendarComponent implements OnInit{
     this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe({
       next: data => {
         console.log(data);
+        console.log(this.availableDates);
       },
       error: err => {
         this.errorMessage = err.error.message;
