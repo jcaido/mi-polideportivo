@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { AvailableDateService } from '../_services/available-date.service';
+import { FacilityService } from '../_services/facility.service';
 
 @Component({
   selector: 'app-calendar',
@@ -8,9 +10,11 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit{
 
   @Input() idFacility?: string;
+
+  errorMessage :string ='';
 
   selected: Date | null = null;
   date: any;
@@ -20,6 +24,19 @@ export class CalendarComponent {
     new Date(2024, 6, 12),
     new Date(2024, 6, 20),
   ];
+
+  constructor(private availableDateService: AvailableDateService, private facilityService: FacilityService) {}
+
+  ngOnInit(): void {
+    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+      }
+    })
+  }
 
   seleccionarFecha () {
     this.date = this.selected?.toLocaleDateString();
