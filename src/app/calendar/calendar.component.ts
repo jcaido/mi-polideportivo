@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { AvailableDateService } from '../_services/available-date.service';
-import { FacilityService } from '../_services/facility.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -25,18 +25,14 @@ export class CalendarComponent implements OnInit{
     new Date(2024, 6, 20),
   ];
 
-  constructor(private availableDateService: AvailableDateService, private facilityService: FacilityService) {}
+  disabledDates: Date[] = [];
+
+  constructor(private availableDateService: AvailableDateService) {}
 
   ngOnInit(): void {
-    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe({
-      next: data => {
-        console.log(data);
-        console.log(this.availableDates);
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-      }
-    })
+    this.availableDateService.getDisabledDates().subscribe(dates => {
+      this.disabledDates = dates;
+    });
   }
 
   seleccionarFecha () {
@@ -50,6 +46,7 @@ export class CalendarComponent implements OnInit{
     }
     const time = date.getTime();
     return this.availableDates.some(d => d.getTime() === time);
+    //return this.disabledDates.some(d => d.getTime() === time);
   }
 
 }
