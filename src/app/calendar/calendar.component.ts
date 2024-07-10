@@ -25,13 +25,15 @@ export class CalendarComponent implements OnInit{
     new Date(2024, 6, 20),
   ];
 
-  disabledDates: Date[] = [];
+  availableDatesAPI: Date[] = [];
 
   constructor(private availableDateService: AvailableDateService) {}
 
   ngOnInit(): void {
-    this.availableDateService.getDisabledDates().subscribe(dates => {
-      this.disabledDates = dates;
+    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe(dates => {
+      this.availableDatesAPI = dates;
+      //console.log(this.availableDatesAPI);
+      //console.log(this.availableDates);
     });
   }
 
@@ -46,7 +48,7 @@ export class CalendarComponent implements OnInit{
     }
     const time = date.getTime();
     return this.availableDates.some(d => d.getTime() === time);
-    //return this.disabledDates.some(d => d.getTime() === time);
+    //return this.availableDatesAPI.some(d => d.getTime() === time);
   }
 
 }
