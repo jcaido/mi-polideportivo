@@ -27,6 +27,10 @@ export class CalendarComponent implements OnInit{
 
   availableDatesAPI: Date[] = [];
 
+  dateAPI: string[] = [];
+  dateModify :string = "";
+
+
   constructor(private availableDateService: AvailableDateService) {}
 
   ngOnInit(): void {
@@ -37,9 +41,21 @@ export class CalendarComponent implements OnInit{
     });
   }
 
-  seleccionarFecha () {
+  dateSelection () {
     this.date = this.selected?.toLocaleDateString();
+    if(this.date) {
+      this.dateAPI = this.date.split("/");
+      this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
+      console.log(this.dateModify);
+    }
     return this.date;
+  }
+
+  monthDayModify(monthDay: string): string {
+    if (monthDay.length === 1) {
+      return "0" + monthDay;
+    }
+    return monthDay
   }
 
   dateFilter = (date: Date | null): boolean => {
