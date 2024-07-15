@@ -12,11 +12,11 @@ const httOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class TimeBookServiceService {
+export class TimeBookService {
 
   constructor(private http: HttpClient) { }
 
-  getAvailableDateTimeByAvailableDateAndFacility(date: string, id_facility: number): Observable<any> {
+  getAvailableDateTimeByAvailableDateAndFacility(date: string, id_facility: string): Observable<any> {
     return this.http.get<TimeBookAvailable>(TIMEBOOK_API + "available-times/" + `${date}` + "/" + `${id_facility}`, httOptions)
   }
 }
