@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   exports: [
@@ -21,7 +22,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatInputModule,
     MatCardModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

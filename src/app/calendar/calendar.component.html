@@ -4,8 +4,12 @@
 <!--<p>Selected Date: {{ dateSelection() }}</p>-->
 <p>Id de la instalacion: {{idFacility}}</p>
 @if (timesAvailablesVisibled) {
-  @for (time of timeBookAvailable; track $index) {
-    <p>{{time.timeBook}}</p>
-  }
+  <mat-radio-group aria-label="Select an option">
+    @for (time of timeBookAvailable; track time.id) {
+      <mat-radio-button value="{{time.id}}">{{time.timeBook}}</mat-radio-button>
+      <!--<p>{{time.timeBook}}</p>-->
+    }
+  </mat-radio-group>
+
 }
 
