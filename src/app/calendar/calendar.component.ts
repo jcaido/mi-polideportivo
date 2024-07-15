@@ -31,7 +31,9 @@ export class CalendarComponent implements OnInit{
   dateAPI: string[] = [];
   dateModify :string = "";
 
-  timeBookAvailable!: TimeBookAvailable;
+  timeBookAvailable: TimeBookAvailable[] = [];
+
+  timesAvailablesVisibled: boolean = false;
 
   constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {}
 
@@ -43,20 +45,17 @@ export class CalendarComponent implements OnInit{
     });
   }
 
-  dateSelection () {
+  onDateSelected(event: Date | null): void {
+    this.selected = event;
     this.date = this.selected?.toLocaleDateString();
-    if(this.date) {
-      this.dateAPI = this.date.split("/");
-      this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
-      console.log(this.dateModify);
-      this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(data => {
-        this.timeBookAvailable = data;
-        console.log(this.dateModify);
-        console.log(this.idFacility);
-        console.log(this.timeBookAvailable);
-      });
-    }
-    return this.date;
+    this.dateAPI = this.date.split("/");
+    this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
+    this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(data => {
+      this.timesAvailablesVisibled = true;
+      this.timeBookAvailable = data;
+      console.log('Fecha seleccionada:', this.date);
+      console.log(this.timeBookAvailable);
+    });
   }
 
   monthDayModify(monthDay: string): string {

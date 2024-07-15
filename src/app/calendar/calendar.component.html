@@ -1,5 +1,11 @@
 <mat-card class="calendar-card">
-  <mat-calendar [(selected)]="selected" [dateFilter]="dateFilter"></mat-calendar>
+    <mat-calendar [(selected)]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
 </mat-card>
-<p>Selected Date: {{ dateSelection() }}</p>
+<!--<p>Selected Date: {{ dateSelection() }}</p>-->
 <p>Id de la instalacion: {{idFacility}}</p>
+@if (timesAvailablesVisibled) {
+  @for (time of timeBookAvailable; track $index) {
+    <p>{{time.timeBook}}</p>
+  }
+}
+
