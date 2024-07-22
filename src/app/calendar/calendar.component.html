@@ -1,13 +1,11 @@
 <mat-card class="calendar-card">
     <mat-calendar [(selected)]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
 </mat-card>
-<!--<p>Selected Date: {{ dateSelection() }}</p>-->
 <p>Id de la instalacion: {{idFacility}}</p>
 @if (timesAvailablesVisibled) {
   <mat-radio-group aria-label="Select an option">
     @for (time of timeBookAvailable; track time.id) {
       <mat-radio-button value="{{time.id}}">{{time.timeBook}}</mat-radio-button>
-      <!--<p>{{time.timeBook}}</p>-->
     }
   </mat-radio-group>
 

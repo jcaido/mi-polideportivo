@@ -1,0 +1,46 @@
+.home-image-card {
+  /*max-width: 400px;
+  margin: auto;
+  text-align: center;*/
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+img {
+  /*width: 100%;
+  height: auto;*/
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white; /* O el color que prefieras para el texto */
+  background-color: rgba(0, 0, 0, 0.5); /* Cambia este valor para ajustar el color y la opacidad del fondo superpuesto */
+  text-align: center;
+  padding: 20px; /* Espaciado interno para el contenido */
+}
+
+.highlighted-text {
+  font-size: 3em; /* Tamaño de fuente grande para destacar */
+  font-weight: bold; /* Texto en negrita */
+  color: #ffcc00; /* Color del texto resaltado */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto */
+}
