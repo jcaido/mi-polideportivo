@@ -1,6 +1,22 @@
 .container {
   display: flex;
-    flex-direction: column;
-    margin:1rem auto;
-    max-width: 600px;
+  flex-direction: column;
+  margin:4rem auto;
+  max-width: 600px;
+  background-color: rgb(212,217,219);
 }
+
+.header {
+  background-color: #6495ED;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+

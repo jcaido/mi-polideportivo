@@ -1,6 +1,11 @@
 @if (!isSuccessful) {
-  <form [formGroup]="formularioRegistro">
-    <mat-card>
+  <mat-card class="container">
+    <mat-card-header class="header">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Registro de usuarios</mat-card-title>
+      <mat-card-subtitle>formulario de registro</mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="formularioRegistro">
       <mat-card-content>
         <mat-form-field appearance="fill">
           <mat-label>nombre de usuario</mat-label>
@@ -34,8 +39,8 @@
       <mat-card-content>
         <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
       </mat-card-content>
-    </mat-card>
-  </form>
+    </form>
+  </mat-card>
   @if (isSignUpFailed) {
     <div>SignUp Failed: {{errorMessageServe}}</div>
   }
