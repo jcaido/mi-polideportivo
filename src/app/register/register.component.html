@@ -1,52 +1,45 @@
-@if (!isSuccessful) {
-  <mat-card class="container">
-    <mat-card-header class="header">
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Registro de usuarios</mat-card-title>
-      <mat-card-subtitle>formulario de registro</mat-card-subtitle>
-    </mat-card-header>
-    <form [formGroup]="formularioRegistro">
-      <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>nombre de usuario</mat-label>
-          <input matInput type="text" formControlName="nombre" required>
+ <mat-card class="container">
+  <mat-card-header class="header">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Registro de usuarios</mat-card-title>
+    <mat-card-subtitle>formulario de registro</mat-card-subtitle>
+  </mat-card-header>
+  <form [formGroup]="formularioRegistro">
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>nombre de usuario</mat-label>
+        <input matInput type="text" formControlName="nombre" required>
           @if (formularioRegistro.get('nombre')?.errors?.['required']) {
             <mat-error>Debe introducir un nombre</mat-error>
           }
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>email</mat-label>
-          <input matInput type="email" formControlName="email" required >
-          @if (formularioRegistro.get('email')?.errors?.['required']) {
-            <mat-error>Debe introducir un email</mat-error>
-          }
-          @if (formularioRegistro.get('email')?.errors?.['email']) {
-            <mat-error>Formato de email inválido</mat-error>
-          }
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>password</mat-label>
-          <input matInput type="password" formControlName="password" required>
-          @if (formularioRegistro.get('password')?.errors?.['required']) {
-            <mat-error>Debe introducir un password</mat-error>
-          }
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
-      </mat-card-content>
-    </form>
-  </mat-card>
-  @if (isSignUpFailed) {
-    <div>SignUp Failed: {{errorMessageServe}}</div>
-  }
-} @else {
-  <div>Your registration is succesfully</div>
-}
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>email</mat-label>
+        <input matInput type="email" formControlName="email" required >
+        @if (formularioRegistro.get('email')?.errors?.['required']) {
+          <mat-error>Debe introducir un email</mat-error>
+        }
+        @if (formularioRegistro.get('email')?.errors?.['email']) {
+          <mat-error>Formato de email inválido</mat-error>
+        }
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>password</mat-label>
+        <input matInput type="password" formControlName="password" required>
+        @if (formularioRegistro.get('password')?.errors?.['required']) {
+          <mat-error>Debe introducir un password</mat-error>
+        }
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
+    </mat-card-content>
+  </form>
+</mat-card>
 
 
 
