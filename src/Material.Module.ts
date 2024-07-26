@@ -10,6 +10,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/mater
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   exports: [
@@ -23,7 +24,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCardModule,
     MatDatepickerModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
