@@ -1,36 +1,32 @@
 @if (!isLoggedIn) {
+<mat-card class="container">
+  <mat-card-header class="header">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Iniciar sesión</mat-card-title>
+    <mat-card-subtitle>formulario de inicio de sesión</mat-card-subtitle>
+  </mat-card-header>
   <form [formGroup]="formularioLogin">
-    <mat-card>
-      <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>nombre de usuario</mat-label>
-          <input matInput type="text" formControlName="nombre" required>
-          @if (formularioLogin.get('nombre')?.errors?.['required']) {
-            <mat-error>Debe introducir un nombre</mat-error>
-          }
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>password</mat-label>
-          <input matInput type="text" formControlName="password" required>
-          @if (formularioLogin.get('password')?.errors?.['required']) {
-            <mat-error>Debe introducir el password</mat-error>
-          }
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
-      </mat-card-content>
-    </mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>nombre de usuario</mat-label>
+        <input matInput type="text" formControlName="nombre" required>
+        @if (formularioLogin.get('nombre')?.errors?.['required']) {
+          <mat-error>Debe introducir un nombre</mat-error>
+        }
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>password</mat-label>
+        <input matInput type="password" formControlName="password" required>
+        @if (formularioLogin.get('password')?.errors?.['required']) {
+          <mat-error>Debe introducir el password</mat-error>
+        }
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
+    </mat-card-content>
   </form>
-  @if (isLoginFailed) {
-    <div>
-      Login failed: {{errorMessage}}
-    </div>
-  }
-} @else {
-  <div>
-    Logged in as {{roles}}
-  </div>
+</mat-card>
 }
