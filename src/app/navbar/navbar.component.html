@@ -4,20 +4,20 @@
   </button>
   <span>Mi Polideportivo</span>
   <div class="spacer"></div>
-  <button routerLink="home" mat-button>Home</button>
+  <button routerLink="home" mat-button>Inicio</button>
   @if (!isLoggedIn) {
-    <button routerLink="register" mat-button>Register</button>
-    <button routerLink="login" mat-button>Login</button>
+    <button routerLink="register" mat-button>Registrar</button>
+    <button routerLink="login" mat-button>Iniciar sesión</button>
   } @else {
     @if (showAdminBoard) {
-      <button routerLink="register" mat-button>Register</button>
-      <button routerLink="login" mat-button>Login</button>
-      <button mat-button (click)="logout()">Logout</button>
+      <button routerLink="register" mat-button>Registrar</button>
+      <button routerLink="login" mat-button>Iniciar sesión</button>
+      <button mat-button (click)="logout()">Cerrar sesión</button>
     } @else {
-      <button routerLink="information" mat-button>Information</button>
-      <button routerLink="book" mat-button>Book</button>
-      <button routerLink="myBookings" mat-button>My Bookings</button>
-      <button mat-button (click)="logout()">Logout</button>
+      <button routerLink="information" mat-button>Información</button>
+      <button routerLink="book" mat-button>Reservar</button>
+      <button routerLink="myBookings" mat-button>Mis reservas</button>
+      <button mat-button (click)="logout()">Cerrar sesión</button>
     }
   }
 </mat-toolbar>
