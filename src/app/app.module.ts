@@ -16,6 +16,8 @@ import { InformationComponent } from './information/information.component';
 import { BookComponent } from './book/book.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { enviroment } from './enviroments/enviroment';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    NgxStripeModule.forRoot(enviroment.publicAPIKey)
   ],
   providers: [
     provideAnimationsAsync()
