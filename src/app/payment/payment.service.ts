@@ -23,4 +23,8 @@ export class PaymentService {
   public confirm(id: string): Observable<string> {
     return this.httpClient.post<string>(PAYMENT_API + `confirm/${id}`, {}, httpOptions);
   }
+
+  public cancel(id: string): Observable<string> {
+    return this.httpClient.post<string>(PAYMENT_API + `cancel/${id}`, {}, httpOptions);
+  }
 }
