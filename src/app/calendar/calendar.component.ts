@@ -35,6 +35,9 @@ export class CalendarComponent implements OnInit{
 
   timesAvailablesVisibled: boolean = false;
 
+  paymentFormVisible: boolean = false;
+  idAvailableDateTime!: number;
+
   constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {}
 
   ngOnInit(): void {
@@ -50,6 +53,7 @@ export class CalendarComponent implements OnInit{
     this.date = this.selected?.toLocaleDateString();
     this.dateAPI = this.date.split("/");
     this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
+    this.paymentFormVisible = false;
     this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(data => {
       this.timesAvailablesVisibled = true;
       this.timeBookAvailable = data;
@@ -72,6 +76,11 @@ export class CalendarComponent implements OnInit{
     const time = date.getTime();
     return this.availableDates.some(d => d.getTime() === time);
     //return this.availableDatesAPI.some(d => d.getTime() === time);
+  }
+
+  timeSelected(id: number) {
+    this.idAvailableDateTime = id;
+    this.paymentFormVisible = true;
   }
 
 }
