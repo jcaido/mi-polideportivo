@@ -18,6 +18,7 @@ import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { enviroment } from './enviroments/enviroment';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { enviroment } from './enviroments/enviroment';
     InformationComponent,
     BookComponent,
     MyBookingsComponent,
-    CalendarComponent
+    CalendarComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
