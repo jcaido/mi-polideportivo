@@ -19,6 +19,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { enviroment } from './enviroments/enviroment';
 import { PaymentComponent } from './payment/payment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    NgxStripeModule.forRoot(enviroment.publicAPIKey)
+    NgxStripeModule.forRoot(enviroment.publicAPIKey),
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
