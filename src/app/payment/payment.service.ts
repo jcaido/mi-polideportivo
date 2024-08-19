@@ -19,4 +19,8 @@ export class PaymentService {
   public pay(paymentIntentDto: PaymentIntentDto): Observable<string> {
     return this.httpClient.post<string>(PAYMENT_API + 'paymentIntent', paymentIntentDto, httpOptions);
   }
+
+  public confirm(id: string): Observable<string> {
+    return this.httpClient.post<string>(PAYMENT_API + `confirm/${id}`, {}, httpOptions);
+  }
 }
