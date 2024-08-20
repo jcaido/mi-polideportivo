@@ -8,8 +8,7 @@
     }
   </mat-radio-group>
   @if (paymentFormVisible) {
-    <p>formulario de pago</p>
-    <p>id de la fecha y hora disponible: {{idAvailableDateTime}}</p>
+    <app-payment idAvailableDateTime="{{idAvailableDateTime}}"></app-payment>
   }
 
 }

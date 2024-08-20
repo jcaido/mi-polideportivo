@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit{
   timesAvailablesVisibled: boolean = false;
 
   paymentFormVisible: boolean = false;
-  idAvailableDateTime!: number;
+  idAvailableDateTime!: string;
 
   constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {}
 
@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit{
   }
 
   timeSelected(id: number) {
-    this.idAvailableDateTime = id;
+    this.idAvailableDateTime = id.toString();
     this.paymentFormVisible = true;
   }
 
