@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { injectStripe, StripeCardComponent } from 'ngx-stripe';
+import { PaymentService } from './payment.service';
+import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
+import { enviroment } from '../enviroments/enviroment';
 
 @Component({
   selector: 'app-payment',
@@ -6,5 +11,44 @@ import { Component } from '@angular/core';
   styleUrl: './payment.component.css'
 })
 export class PaymentComponent {
+
+  @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
+
+  @Input() idAvailableDateTime?: string;
+
+  constructor(private fb: FormBuilder, private paymentService: PaymentService) {}
+
+  cardOptions: StripeCardElementOptions = {
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        fontWeight: '300',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '18px',
+        '::placeholder': {
+          color: '#CFD7E0'
+        }
+      }
+    }
+  };
+
+  elementsOptions: StripeElementsOptions = {
+    locale: 'es'
+  };
+
+  checkOutForm = this.fb.group({
+    name: ['', Validators.required]
+  });
+
+  stripe = injectStripe(enviroment.publicAPIKey);
+
+  payment: any = {};
+
+  errorMessage: string = '';
+
+  pay() {
+
+  }
 
 }

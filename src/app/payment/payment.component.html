@@ -1,1 +1,17 @@
-<p>payment works!</p>
+<p>id de la fecha y hora disponible: {{ idAvailableDateTime }}</p>
+<form [formGroup]="checkOutForm">
+  <mat-form-field>
+    <input matInput type="text" placeholder="nombre" formControlName="name" required />
+    @if (checkOutForm.get('name')?.errors?.['required']) {
+      <mat-error>Debe introducir un nombre</mat-error>
+    }
+  </mat-form-field>
+  <ngx-stripe-elements
+    [stripe]="stripe"
+    [elementsOptions]="elementsOptions"
+  >
+    <ngx-stripe-card [options]="cardOptions" />
+  </ngx-stripe-elements>
+  <mat-error>{{errorMessage}}</mat-error>
+  <button mat-raised-button color="primary" (click)="pay()">Pagar</button>
+</form>
