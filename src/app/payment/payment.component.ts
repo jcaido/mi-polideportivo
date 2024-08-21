@@ -4,6 +4,7 @@ import { injectStripe, StripeCardComponent } from 'ngx-stripe';
 import { PaymentService } from './payment.service';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
 import { enviroment } from '../enviroments/enviroment';
+import { PaymentIntentDto } from './payment-intent-dto';
 
 @Component({
   selector: 'app-payment',
@@ -48,7 +49,28 @@ export class PaymentComponent {
   errorMessage: string = '';
 
   pay() {
-
+    this.errorMessage = '';
+    const userName = this.checkOutForm.get('name')?.value;
+    this.stripe
+      .createToken(this.cardElement.element)
+      .subscribe((result) => {
+        if (result.token) {
+          const paymentIntentDto: PaymentIntentDto = {
+            token: result.token.id,
+            description: 'reserva pista x',
+            amount: 10*100,
+            currency: 'EUR'
+          }
+          this.paymentService.pay(paymentIntentDto).subscribe(
+            data => {
+              this.payment = data;
+              console.log(data);
+            }
+          )
+        } else if (result.error) {
+          this.errorMessage = result.error.message!;
+        }
+      })
   }
 
 }
