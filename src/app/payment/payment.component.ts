@@ -1,10 +1,12 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { injectStripe, StripeCardComponent } from 'ngx-stripe';
 import { PaymentService } from './payment.service';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
 import { enviroment } from '../enviroments/enviroment';
 import { PaymentIntentDto } from './payment-intent-dto';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalPaymentComponent } from '../modal-payment/modal-payment.component';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +18,8 @@ export class PaymentComponent {
   @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
 
   @Input() idAvailableDateTime?: string;
+
+  readonly dialog = inject(MatDialog);
 
   constructor(private fb: FormBuilder, private paymentService: PaymentService) {}
 
@@ -64,7 +68,10 @@ export class PaymentComponent {
           this.paymentService.pay(paymentIntentDto).subscribe(
             data => {
               this.payment = data;
-              console.log(data);
+              //console.log(data);
+              this.dialog.open(ModalPaymentComponent,
+                {data: {id: this.payment.id}}
+              )
             }
           )
         } else if (result.error) {
