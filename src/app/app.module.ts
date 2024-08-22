@@ -20,6 +20,13 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { enviroment } from './enviroments/enviroment';
 import { PaymentComponent } from './payment/payment.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalPaymentComponent } from './modal-payment/modal-payment.component';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,14 +43,19 @@ import { HttpClientModule } from '@angular/common/http';
     BookComponent,
     MyBookingsComponent,
     CalendarComponent,
-    PaymentComponent
+    PaymentComponent,
+    ModalPaymentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     NgxStripeModule.forRoot(enviroment.publicAPIKey),
-    HttpClientModule
+    HttpClientModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
   ],
   providers: [
     provideAnimationsAsync()
