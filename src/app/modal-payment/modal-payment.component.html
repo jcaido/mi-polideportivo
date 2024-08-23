@@ -1,10 +1,11 @@
 <h2 mat-dialog-title>¿Deseas confirmar el pago?</h2>
 <mat-dialog-content>
-  <h5>Datos del pago:</h5>
-  <p><b>ID: </b>{{data.id}}</p>
-  <!--<p><b>Nombre: </b>{{data.name}}</p>
-  <p><b>Descripción: </b>{{data.description}}</p>
-  <p><b>Precio: </b>{{data.price}}</p>-->
+  <h3><b>INSTALACIÓN: </b>{{data.nameFacility}}</h3>
+  <h3><b>FECHA RESERVA: </b>{{data.dateSelected}}</h3>
+  <h3><b>HORA RESERVA: </b>{{data.timeBook}}</h3>
+  <h3><b>USUARIO: </b>{{data.userName}}</h3>
+  <h3><b>IMPORTE: </b>10,00 €</h3>
+  <h3><b>IDENTIFICADOR: </b>{{data.id}}</h3>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="confirm()">Confirmar</button>
