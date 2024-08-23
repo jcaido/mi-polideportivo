@@ -4,13 +4,16 @@
 @if (timesAvailablesVisibled) {
   <mat-radio-group aria-label="Select an option">
     @for (time of timeBookAvailable; track time.id) {
-      <mat-radio-button value="{{time.id}}" (click)="timeSelected(time.id)">{{time.timeBook}}</mat-radio-button>
+      <mat-radio-button value="{{time.id}}" (click)="timeSelected(time.id, time.timeBook)">{{time.timeBook}}</mat-radio-button>
     }
   </mat-radio-group>
   @if (paymentFormVisible) {
-    <app-payment idAvailableDateTime="{{idAvailableDateTime}}"></app-payment>
+    <app-payment
+      idAvailableDateTime="{{idAvailableDateTime}}"
+      nameFacility="{{nameFacility}}"
+      dateSelected="{{date}}"
+      timeBook="{{timeBook}}">
+    </app-payment>
   }
 
 }
-
-

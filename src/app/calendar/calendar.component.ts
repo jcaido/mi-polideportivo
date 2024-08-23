@@ -14,6 +14,7 @@ import { TimeBookAvailable } from '../_helpers/timeBookAvailable';
 export class CalendarComponent implements OnInit{
 
   @Input() idFacility?: string;
+  @Input() nameFacility?: string;
 
   errorMessage :string ='';
 
@@ -37,6 +38,7 @@ export class CalendarComponent implements OnInit{
 
   paymentFormVisible: boolean = false;
   idAvailableDateTime!: string;
+  timeBook!: string;
 
   constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {}
 
@@ -57,8 +59,6 @@ export class CalendarComponent implements OnInit{
     this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(data => {
       this.timesAvailablesVisibled = true;
       this.timeBookAvailable = data;
-      console.log('Fecha seleccionada:', this.date);
-      console.log(this.timeBookAvailable);
     });
   }
 
@@ -78,8 +78,9 @@ export class CalendarComponent implements OnInit{
     //return this.availableDatesAPI.some(d => d.getTime() === time);
   }
 
-  timeSelected(id: number) {
+  timeSelected(id: number, timeBook: any) {
     this.idAvailableDateTime = id.toString();
+    this.timeBook = timeBook;
     this.paymentFormVisible = true;
   }
 
