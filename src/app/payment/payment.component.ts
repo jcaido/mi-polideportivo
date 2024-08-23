@@ -18,6 +18,9 @@ export class PaymentComponent {
   @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
 
   @Input() idAvailableDateTime?: string;
+  @Input() nameFacility?: string;
+  @Input() dateSelected: any;
+  @Input() timeBook: any;
 
   readonly dialog = inject(MatDialog);
 
@@ -68,9 +71,8 @@ export class PaymentComponent {
           this.paymentService.pay(paymentIntentDto).subscribe(
             data => {
               this.payment = data;
-              //console.log(data);
               this.dialog.open(ModalPaymentComponent,
-                {data: {id: this.payment.id}}
+                {data: {id: this.payment.id, nameFacility: this.nameFacility, dateSelected: this.dateSelected, timeBook: this.timeBook, userName: userName}}
               )
             }
           )
