@@ -16,7 +16,22 @@ export class ModalPaymentComponent {
 
   constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar, private route: Router) {}
 
-  confirm() {}
+  confirm(id: string) {
+    this.paymentService.confirm(id).subscribe(
+      data => {
+        this.dialogRef.close();
+        this._snackBar.open("Pago confirmado", "Cerrar", {
+          duration: 5000
+        })
+      },
+      err => {
+        this.dialogRef.close();
+        this._snackBar.open("Error al confirmar", "Cerrar", {
+          duration: 5000
+        })
+      }
+    )
+  }
 
   cancel() {}
 

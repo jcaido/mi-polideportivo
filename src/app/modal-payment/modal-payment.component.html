@@ -8,6 +8,6 @@
   <h3><b>IDENTIFICADOR: </b>{{data.id}}</h3>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="confirm()">Confirmar</button>
+  <button mat-raised-button color="primary" (click)="confirm(data.id)">Confirmar</button>
   <button mat-raised-button color="primary" (click)="cancel()" cdkFocusInitial>Cancelar</button>
 </mat-dialog-actions>
