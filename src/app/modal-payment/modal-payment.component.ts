@@ -33,6 +33,21 @@ export class ModalPaymentComponent {
     )
   }
 
-  cancel() {}
+  cancel(id: string) {
+    this.paymentService.cancel(id).subscribe(
+      data => {
+        this.dialogRef.close();
+        this._snackBar.open("Pago canelado", "Cerrar", {
+          duration: 5000
+        })
+      },
+      err => {
+        this.dialogRef.close();
+        this._snackBar.open("Error al cancelar", "Cerrar", {
+          duration: 5000
+        })
+      }
+    )
+  }
 
 }
