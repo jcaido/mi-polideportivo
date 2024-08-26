@@ -72,8 +72,15 @@ export class PaymentComponent {
             data => {
               this.payment = data;
               this.dialog.open(ModalPaymentComponent,
-                {data: {id: this.payment.id, nameFacility: this.nameFacility, dateSelected: this.dateSelected, timeBook: this.timeBook, userName: userName}}
-              )
+                {data: {
+                  id: this.payment.id,
+                  nameFacility: this.nameFacility,
+                  dateSelected: this.dateSelected,
+                  timeBook: this.timeBook,
+                  userName: userName,
+                  idAvailableDateTime: this.idAvailableDateTime
+                }
+              })
             }
           )
         } else if (result.error) {
