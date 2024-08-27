@@ -15,12 +15,21 @@ export class ModalPaymentComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<ModalPaymentComponent>);
   readonly data = inject(MAT_DIALOG_DATA);
 
+  nameFacility: string = '';
+  dateSelected: string = '';
+  timeBook: string = '';
+  userName: string = '';
+
   idUser: string = '';
 
   constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar, private route: Router, private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.idUser = this.storageService.getUser().id;
+    this.nameFacility = this.data.nameFacility;
+    this.dateSelected = this.data.dateSelected;
+    this.timeBook = this.data.timeBook;
+    this.userName = this.data.userName;
   }
 
   confirm(id: string, id_available_date_time: string, id_user: string) {
@@ -29,7 +38,20 @@ export class ModalPaymentComponent implements OnInit {
         this.dialogRef.close();
         this._snackBar.open("Pago confirmado", "Cerrar", {
           duration: 5000
-        })
+        });
+        this.paymentService.getReceiptPdf(id, this.nameFacility, this.timeBook, this.userName).subscribe(
+          (data: Blob) => {
+            const downloadURL = window.URL.createObjectURL(data);
+            const link = document.createElement('a');
+            link.href = downloadURL;
+            link.download = 'receipt.pdf';
+            link.click();
+          },
+          error => {
+            console.error('Error downloading the receipt', error);
+          }
+        )
+        //this.route.navigate(['/']);
       },
       err => {
         this.dialogRef.close();
@@ -56,5 +78,4 @@ export class ModalPaymentComponent implements OnInit {
       }
     )
   }
-
 }
