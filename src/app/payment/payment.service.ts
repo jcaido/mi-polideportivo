@@ -31,9 +31,9 @@ export class PaymentService {
   public getReceiptPdf(
     id: string,
     nameFacility: string,
-    //dateSelected: string,
+    dateSelected: string,
     timeBook: string,
     userName: string): Observable<Blob> {
-      return this.httpClient.get(PAYMENT_API + `receipt/${id}/${nameFacility}/${timeBook}/${userName}`, {responseType: 'blob'})
+      return this.httpClient.get(PAYMENT_API + `receipt/${id}/${nameFacility}/${dateSelected}/${timeBook}/${userName}`, {responseType: 'blob'})
     }
 }
