@@ -17,6 +17,8 @@ export class ModalPaymentComponent implements OnInit {
 
   nameFacility: string = '';
   dateSelected: string = '';
+  date: string[] = [];
+  dateSelectedModify: string = '';
   timeBook: string = '';
   userName: string = '';
 
@@ -28,6 +30,8 @@ export class ModalPaymentComponent implements OnInit {
     this.idUser = this.storageService.getUser().id;
     this.nameFacility = this.data.nameFacility;
     this.dateSelected = this.data.dateSelected;
+    this.date = this.dateSelected.split('/');
+    this.dateSelectedModify = this.date[0] + "-" + this.date[1] + "-" + this.date[2];
     this.timeBook = this.data.timeBook;
     this.userName = this.data.userName;
   }
@@ -39,7 +43,7 @@ export class ModalPaymentComponent implements OnInit {
         this._snackBar.open("Pago confirmado", "Cerrar", {
           duration: 5000
         });
-        this.paymentService.getReceiptPdf(id, this.nameFacility, this.timeBook, this.userName).subscribe(
+        this.paymentService.getReceiptPdf(id, this.nameFacility, this.dateSelectedModify, this.timeBook, this.userName).subscribe(
           (data: Blob) => {
             const downloadURL = window.URL.createObjectURL(data);
             const link = document.createElement('a');
