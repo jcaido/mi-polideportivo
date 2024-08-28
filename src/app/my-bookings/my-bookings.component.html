@@ -1,1 +1,7 @@
-<p>my-bookings works!</p>
+@for (book of booksByUser; track $index) {
+  <div>
+    <p>{{book.dateAvailable}}</p>
+    <p>{{book.timeBook}}</p>
+    <p>{{book.nameFacility}}</p>
+  </div>
+}
