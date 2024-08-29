@@ -1,0 +1,11 @@
+.contenedor {
+  display: flex;
+  margin: 20px 20px;
+}
+
+.inline {
+  margin-right: 10px;;
+  padding: 10px;
+  border: 2px solid rgb(202, 186, 186);
+  border-radius: 10px;
+}

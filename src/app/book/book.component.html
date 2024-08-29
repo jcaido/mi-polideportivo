@@ -1,11 +1,17 @@
 @for (facility of facilities; track facility.id) {
-  <div>
-    <h1>{{facility.nameFacility}}</h1>
-    <app-calendar
-      idFacility="{{facility.id}}"
-      nameFacility="{{facility.nameFacility}}">
-    </app-calendar>
+  <div class="contenedor">
+    <div class="inline">
+      <h2>{{facility.nameFacility}}</h2>
+      <img src="assets/{{facility.urlPhoto}}" alt="Imagen de inicio" width="300px" height="300px">
+    </div>
+    <div class="inline">
+      <app-calendar
+        idFacility="{{facility.id}}"
+        nameFacility="{{facility.nameFacility}}">
+      </app-calendar>
+    </div>
   </div>
+
 }
 
 
