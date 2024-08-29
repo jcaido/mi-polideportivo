@@ -12,6 +12,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   exports: [
@@ -28,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRadioModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatTableModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
