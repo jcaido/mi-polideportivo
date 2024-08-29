@@ -1,7 +1,24 @@
-@for (book of booksByUser; track $index) {
-  <div>
-    <p>{{book.dateAvailable}}</p>
-    <p>{{book.timeBook}}</p>
-    <p>{{book.nameFacility}}</p>
-  </div>
-}
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title> HISTÓRICO DE RESERVAS</mat-card-title>
+    <mat-card-subtitle>{{nameUser}} </mat-card-subtitle>
+    <mat-card-subtitle>{{emailUser}} </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+
+<table mat-table [dataSource]="booksByUser" class="mat-elevation-z8">
+  <ng-container matColumnDef="dateAvailable">
+    <th mat-header-cell *matHeaderCellDef> fecha reserva. </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateAvailable}}</td>
+  </ng-container>
+  <ng-container matColumnDef="timeBook">
+    <th mat-header-cell *matHeaderCellDef> hora reserva. </th>
+    <td mat-cell *matCellDef="let element"> {{element.timeBook}}</td>
+  </ng-container>
+  <ng-container matColumnDef="nameFacility">
+    <th mat-header-cell *matHeaderCellDef> instalaciónn. </th>
+    <td mat-cell *matCellDef="let element"> {{element.nameFacility}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

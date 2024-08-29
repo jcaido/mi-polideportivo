@@ -12,12 +12,17 @@ export class MyBookingsComponent implements OnInit {
 
   booksByUser: BooksByUser[] = [];
   idUser: string = '';
+  nameUser: string = '';
+  emailUser: string = '';
   errorMessage: string = '';
+  displayedColumns: string[] = ['dateAvailable', 'timeBook', 'nameFacility'];
 
   constructor(private storageService: StorageService, private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.idUser = this.storageService.getUser().id;
+    this.nameUser = this.storageService.getUser().username;
+    this.emailUser = this.storageService.getUser().email;
     this.booksService.getAllBooksByUser(this.idUser).subscribe({
       next: data => {
         this.booksByUser = data;
