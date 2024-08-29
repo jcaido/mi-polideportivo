@@ -2,3 +2,14 @@
   width: 300px;
 }
 
+.radio-group {
+  margin-top: 10px;
+  padding-right: 10px;
+  border: 1px solid rgb(208, 192, 192);
+}
+
+.payment {
+  margin-top: 10px;
+  border: 1px solid rgb(208, 192, 192);
+}
+
