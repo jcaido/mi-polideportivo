@@ -1,0 +1,19 @@
+.construction-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.construction-container h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.construction-container p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.construction-container img {
+  width: 300px;
+  height: auto;
+}

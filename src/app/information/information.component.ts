@@ -8,11 +8,7 @@ import { StorageService } from '../_services/storage.service';
 })
 export class InformationComponent implements OnInit {
 
-  username: string = '';
-
-  constructor(private storageService: StorageService) {
-    this.username = storageService.getUser().username;
-  }
+  constructor(private storageService: StorageService) {}
 
   ngOnInit(): void {
     if (!sessionStorage.getItem('pageReloaded')) {
