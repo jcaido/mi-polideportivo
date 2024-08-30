@@ -6,15 +6,15 @@
   <div class="spacer"></div>
   <button routerLink="home" mat-button>Inicio</button>
   @if (!isLoggedIn) {
-    <button routerLink="register" mat-button>Registrar</button>
-    <button routerLink="login" mat-button>Iniciar sesión</button>
+    <button routerLink="register" mat-button>Registro</button>
+    <button routerLink="login" mat-button>Acceso</button>
   } @else {
     @if (showAdminBoard) {
-      <button routerLink="register" mat-button>Registrar</button>
-      <button routerLink="login" mat-button>Iniciar sesión</button>
+      <button routerLink="register" mat-button>Registro</button>
+      <button routerLink="login" mat-button>Acceso</button>
       <button mat-button (click)="logout()">Cerrar sesión</button>
     } @else {
-      <button routerLink="information" mat-button>Información</button>
+      <button routerLink="information" mat-button>Información de servicio</button>
       <button routerLink="book" mat-button>Reservar</button>
       <button routerLink="myBookings" mat-button>Mis reservas</button>
       <button mat-button (click)="logout()">Cerrar sesión</button>
