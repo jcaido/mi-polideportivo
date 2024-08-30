@@ -2,6 +2,7 @@ import {Component, } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
 
   errorMessageServe: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private route: Router) {}
 
   formularioRegistro = this.fb.group({
     nombre: ['', Validators.required],
@@ -30,6 +31,7 @@ export class RegisterComponent {
         this._snackBar.open("Usuario registrado correctamente", "Cerrar", {
           duration: 5000
         });
+        this.route.navigate(['/']);
       },
       error: err => {
         this.errorMessageServe = err.error.message;
