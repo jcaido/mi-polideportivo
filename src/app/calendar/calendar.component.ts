@@ -22,9 +22,9 @@ export class CalendarComponent implements OnInit{
   date: any;
 
   availableDates: Date[] = [
-    new Date(2024, 6, 8),
-    new Date(2024, 6, 15),
-    new Date(2024, 6, 20),
+    new Date(2024, 7, 8),
+    new Date(2024, 7, 15),
+    new Date(2024, 7, 20),
   ];
 
   availableDatesAPI: Date[] = [];
@@ -35,31 +35,46 @@ export class CalendarComponent implements OnInit{
   timeBookAvailable: TimeBookAvailable[] = [];
 
   timesAvailablesVisibled: boolean = false;
-
   paymentFormVisible: boolean = false;
+
   idAvailableDateTime!: string;
   timeBook!: string;
 
-  constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {}
-
-  ngOnInit(): void {
-    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe(dates => {
-      this.availableDatesAPI = dates;
-      //console.log(this.availableDatesAPI);
-      //console.log(this.availableDates);
-    });
+  constructor(private availableDateService: AvailableDateService, private timeBookService: TimeBookService) {
+    this.selected = new Date();
   }
 
-  onDateSelected(event: Date | null): void {
-    this.selected = event;
+  ngOnInit(): void {
+    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe(
+      dates => {
+        this.availableDatesAPI = dates;
+        //console.log(this.availableDatesAPI);
+        //console.log(this.availableDates);
+      });
+
+
     this.date = this.selected?.toLocaleDateString();
     this.dateAPI = this.date.split("/");
     this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
     this.paymentFormVisible = false;
-    this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(data => {
-      this.timesAvailablesVisibled = true;
-      this.timeBookAvailable = data;
-    });
+    this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
+      data => {
+        this.timeBookAvailable = data;
+        this.timesAvailablesVisibled = true;
+      });
+  }
+
+  onDateSelected(selectedDate: Date | null): void {
+    this.selected= selectedDate;
+    this.date = this.selected?.toLocaleDateString();
+    this.dateAPI = this.date.split("/");
+    this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
+    this.paymentFormVisible = false;
+    this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
+      data => {
+        this.timeBookAvailable = data;
+        this.timesAvailablesVisibled = true;
+      });
   }
 
   monthDayModify(monthDay: string): string {

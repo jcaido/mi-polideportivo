@@ -1,5 +1,6 @@
 <mat-card class="calendar-card">
-    <mat-calendar [(selected)]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
+  <h6>Seleccionar fecha (doble click)</h6>
+    <mat-calendar [selected]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
 </mat-card>
 @if (timesAvailablesVisibled) {
   <div class="radio-group">
@@ -19,5 +20,6 @@
       </app-payment>
     </div>
   }
-
 }
+
+
