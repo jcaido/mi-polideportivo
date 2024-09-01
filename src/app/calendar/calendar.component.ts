@@ -22,9 +22,18 @@ export class CalendarComponent implements OnInit{
   date: any;
 
   availableDates: Date[] = [
-    new Date(2024, 7, 8),
-    new Date(2024, 7, 15),
-    new Date(2024, 7, 20),
+    new Date(2024, 8, 8),
+    new Date(2024, 8, 15),
+    new Date(2024, 8, 20),
+    new Date(2024, 9, 3),
+    new Date(2024, 9, 16),
+    new Date(2024, 9, 21),
+    new Date(2024, 10, 2),
+    new Date(2024, 10, 18),
+    new Date(2024, 10, 26),
+    new Date(2024, 11, 8),
+    new Date(2024, 11, 12),
+    new Date(2024, 11, 24)
   ];
 
   availableDatesAPI: Date[] = [];
