@@ -45,6 +45,7 @@ export class CalendarComponent implements OnInit{
 
   timesAvailablesVisibled: boolean = false;
   paymentFormVisible: boolean = false;
+  closeTimesAvailable: boolean = false;
 
   idAvailableDateTime!: string;
   timeBook!: string;
@@ -83,6 +84,7 @@ export class CalendarComponent implements OnInit{
       data => {
         this.timeBookAvailable = data;
         this.timesAvailablesVisibled = true;
+        this.closeTimesAvailable = true;
       });
   }
 
@@ -106,6 +108,11 @@ export class CalendarComponent implements OnInit{
     this.idAvailableDateTime = id.toString();
     this.timeBook = timeBook;
     this.paymentFormVisible = true;
+  }
+
+  closeTimesAvailables() {
+    this.timesAvailablesVisibled = false;
+    this.closeTimesAvailable = false;
   }
 
 }

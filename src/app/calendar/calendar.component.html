@@ -9,6 +9,9 @@
         <mat-radio-button value="{{time.id}}" (click)="timeSelected(time.id, time.timeBook)">{{time.timeBook}}</mat-radio-button>
       }
     </mat-radio-group>
+    @if (closeTimesAvailable) {
+      <button mat-icon-button mat-dialog-close color="primary" class="close-button" (click)="closeTimesAvailables()"><mat-icon>close</mat-icon></button>
+    }
   </div>
   @if (paymentFormVisible) {
     <div class="payment">
