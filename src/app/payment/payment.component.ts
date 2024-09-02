@@ -1,4 +1,4 @@
-import { Component, inject, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { injectStripe, StripeCardComponent } from 'ngx-stripe';
 import { PaymentService } from './payment.service';
@@ -78,7 +78,7 @@ export class PaymentComponent {
                   dateSelected: this.dateSelected,
                   timeBook: this.timeBook,
                   userName: userName,
-                  idAvailableDateTime: this.idAvailableDateTime
+                  idAvailableDateTime: this.idAvailableDateTime,
                 }
               })
             }

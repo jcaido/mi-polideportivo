@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PaymentService } from '../payment/payment.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,7 +24,12 @@ export class ModalPaymentComponent implements OnInit {
 
   idUser: string = '';
 
-  constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar, private route: Router, private storageService: StorageService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private _snackBar: MatSnackBar,
+    private route: Router,
+    private storageService: StorageService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.idUser = this.storageService.getUser().id;
@@ -55,7 +60,7 @@ export class ModalPaymentComponent implements OnInit {
             console.error('Error downloading the receipt', error);
           }
         )
-        //this.route.navigate(['/']);
+        this.router.navigate(['/myBookings']);
       },
       err => {
         this.dialogRef.close();
