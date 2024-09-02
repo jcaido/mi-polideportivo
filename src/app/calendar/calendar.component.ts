@@ -113,6 +113,8 @@ export class CalendarComponent implements OnInit{
   closeTimesAvailables() {
     this.timesAvailablesVisibled = false;
     this.closeTimesAvailable = false;
+    this.paymentFormVisible = false;
+    this.selected = new Date();
   }
 
 }
