@@ -19,3 +19,10 @@
   left: 3px;
 }
 
+.noTimesAvailables {
+  margin-left: 5px;
+}
+
+.noTimesAvailables h4 {
+  color: rgb(108, 105, 105);
+}
