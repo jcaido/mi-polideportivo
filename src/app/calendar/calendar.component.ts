@@ -70,7 +70,7 @@ export class CalendarComponent implements OnInit{
     this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
       data => {
         this.timeBookAvailable = data;
-        this.timesAvailablesVisibled = true;
+        //this.timesAvailablesVisibled = true;
       });
   }
 
@@ -85,7 +85,7 @@ export class CalendarComponent implements OnInit{
         this.timeBookAvailable = data;
         this.timesAvailablesVisibled = true;
         this.closeTimesAvailable = true;
-      });
+    });
   }
 
   monthDayModify(monthDay: string): string {
@@ -116,5 +116,4 @@ export class CalendarComponent implements OnInit{
     this.paymentFormVisible = false;
     this.selected = new Date();
   }
-
 }

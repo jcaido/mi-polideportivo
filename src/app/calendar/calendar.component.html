@@ -1,10 +1,9 @@
 <mat-card class="calendar-card">
   <h6>Seleccionar fecha (doble click)</h6>
-    <mat-calendar [selected]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
+  <mat-calendar [selected]="selected" [dateFilter]="dateFilter" (selectedChange)="onDateSelected($event)"></mat-calendar>
 </mat-card>
 @if (timesAvailablesVisibled) {
   <div class="radio-group">
-
       @if (timeBookAvailable.length == 0) {
         <div class="noTimesAvailables">
           <h4>sin fechas disponibles

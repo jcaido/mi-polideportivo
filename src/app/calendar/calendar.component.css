@@ -9,6 +9,7 @@
 }
 
 .payment {
+  width: 500px;
   margin-top: 10px;
   border: 1px solid rgb(208, 192, 192);
 }
