@@ -4,22 +4,22 @@
 </mat-card>
 @if (timesAvailablesVisibled) {
   <div class="radio-group">
-      @if (timeBookAvailable.length == 0) {
-        <div class="noTimesAvailables">
-          <h4>sin fechas disponibles
-            <button mat-icon-button color="primary" class="close-button" (click)="closeTimesAvailables()"><mat-icon>close</mat-icon></button>
-          </h4>
-        </div>
-      } @else {
-        <mat-radio-group aria-label="Select an option">
-          @for (time of timeBookAvailable; track time.id) {
-            <mat-radio-button value="{{time.id}}" (click)="timeSelected(time.id, time.timeBook)">{{time.timeBook}}</mat-radio-button>
-          }
-        </mat-radio-group>
-        @if (closeTimesAvailable) {
+    @if (timeBookAvailable.length == 0) {
+      <div class="noTimesAvailables">
+        <h4>sin horas disponibles
           <button mat-icon-button color="primary" class="close-button" (click)="closeTimesAvailables()"><mat-icon>close</mat-icon></button>
+        </h4>
+      </div>
+    } @else {
+      <mat-radio-group aria-label="Select an option">
+        @for (time of timeBookAvailable; track time.id) {
+          <mat-radio-button value="{{time.id}}" (click)="timeSelected(time.id, time.timeBook)">{{time.timeBook}}</mat-radio-button>
         }
+      </mat-radio-group>
+      @if (closeTimesAvailable) {
+        <button mat-icon-button color="primary" class="close-button" (click)="closeTimesAvailables()"><mat-icon>close</mat-icon></button>
       }
+    }
   </div>
   @if (paymentFormVisible) {
     <div class="payment">
