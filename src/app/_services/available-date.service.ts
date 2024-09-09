@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Facility } from '../_helpers/facility';
 
 const AVAILABLE_DATE_API = 'https://polideportivoh2render.onrender.com/api/available-date/dates/';
 
