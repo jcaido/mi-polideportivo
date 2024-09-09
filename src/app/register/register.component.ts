@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 
   errorMessageServe: string = '';
+  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private route: Router) {}
 
@@ -22,12 +23,14 @@ export class RegisterComponent {
   })
 
   onSubmit(): void {
+    this.isLoading = true;
     this.authService.register(
       this.formularioRegistro.value.nombre!,
       this.formularioRegistro.value.email!,
       this.formularioRegistro.value.password!
     ).subscribe({
       next: data => {
+        this.isLoading = false;
         this._snackBar.open("Usuario registrado correctamente", "Cerrar", {
           duration: 5000
         });
