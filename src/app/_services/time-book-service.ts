@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TimeBookAvailable } from '../_helpers/timeBookAvailable';
 
-const TIMEBOOK_API = 'http://localhost:8080/api/available-date-time/';
+const TIMEBOOK_API = 'https://polideportivoh2render.onrender.com/api/available-date-time/';
 
 const httOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

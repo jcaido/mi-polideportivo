@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Facility } from '../_helpers/facility';
 
-const AVAILABLE_DATE_API = 'http://localhost:8080/api/available-date/dates/';
+const AVAILABLE_DATE_API = 'https://polideportivoh2render.onrender.com/api/available-date/dates/';
 
 const httOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
