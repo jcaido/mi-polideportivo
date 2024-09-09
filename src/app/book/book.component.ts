@@ -11,15 +11,18 @@ export class BookComponent implements OnInit {
 
   facilities :Facility[] = [];
   errorMessage :string ='';
+  isLoading: boolean = true;
 
   constructor(private facilityService :FacilityService) {}
 
   ngOnInit(): void {
     this.facilityService.getAllFacilities().subscribe({
       next: data => {
+        this.isLoading = false;
         this.facilities = data;
       },
       error: err => {
+        this.isLoading = false;
         this.errorMessage = err.error.message;
       }
     })

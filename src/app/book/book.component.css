@@ -9,3 +9,10 @@
   border: 2px solid rgb(202, 186, 186);
   border-radius: 10px;
 }
+
+.container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  height: 100vh;           /* Altura completa de la ventana */
+}

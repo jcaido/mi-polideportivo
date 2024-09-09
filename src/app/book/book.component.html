@@ -1,17 +1,27 @@
-@for (facility of facilities; track facility.id) {
-  <div class="contenedor">
-    <div class="inline">
-      <h2>{{facility.nameFacility}}</h2>
-      <img src="assets/{{facility.urlPhoto}}" alt="Imagen de inicio" width="300px" height="300px">
-    </div>
-    <div class="inline">
-      <app-calendar
-        idFacility="{{facility.id}}"
-        nameFacility="{{facility.nameFacility}}">
-      </app-calendar>
-    </div>
+@if (isLoading) {
+  <div class="container">
+    <mat-progress-spinner class="spinner"
+      [color]="'primary'"
+      [mode]="'indeterminate'"
+      [diameter]="30">
+    </mat-progress-spinner>
   </div>
-
+} @else {
+    @for (facility of facilities; track facility.id) {
+      <div class="contenedor">
+        <div class="inline">
+          <h2>{{facility.nameFacility}}</h2>
+          <img src="assets/{{facility.urlPhoto}}" alt="Imagen de inicio" width="300px" height="300px">
+        </div>
+        <div class="inline">
+          <app-calendar
+            idFacility="{{facility.id}}"
+            nameFacility="{{facility.nameFacility}}">
+          </app-calendar>
+        </div>
+      </div>
+    }
 }
+
 
 
