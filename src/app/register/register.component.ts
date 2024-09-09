@@ -37,6 +37,7 @@ export class RegisterComponent {
         this.route.navigate(['/']);
       },
       error: err => {
+        this.isLoading = false;
         this.errorMessageServe = err.error.message;
         this._snackBar.open(this.errorMessageServe, "Cerrar", {
           duration: 5000
