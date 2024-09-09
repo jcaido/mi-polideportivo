@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit{
   isLoggedIn: boolean = false;
   errorMessage: string = '';
   roles: string[] = [];
+  isLoading: boolean = false;
 
   constructor(private authService: AuthService, private storageService: StorageService, private fb :FormBuilder,private _snackBar: MatSnackBar, private router: Router) {}
 
@@ -31,11 +32,13 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() :void {
+    this.isLoading = true;
     this.authService.login(
       this.formularioLogin.value.nombre!,
       this.formularioLogin.value.password!
     ).subscribe({
       next: data => {
+        this.isLoading = false;
         this.storageService.saveUser(data);
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit{
         this.router.navigate(['/information']);
       },
       error: err => {
+        this.isLoading = false;
         this.errorMessage = err.error.message;
         this._snackBar.open(this.errorMessage, "Cerrar", {
           duration: 5000

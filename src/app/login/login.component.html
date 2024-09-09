@@ -26,6 +26,13 @@
     </mat-card-content>
     <mat-card-content>
       <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
+      @if (isLoading) {
+        <mat-progress-spinner class="spinner"
+          [color]="'primary'"
+          [mode]="'indeterminate'"
+          [diameter]="30">
+        </mat-progress-spinner>
+      }
     </mat-card-content>
   </form>
 </mat-card>

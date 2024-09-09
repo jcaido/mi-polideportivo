@@ -18,3 +18,14 @@
 mat-form-field {
   width: 100%;
 }
+
+button {
+  display: inline-block;
+}
+
+.spinner {
+  display: inline-block;
+  position: relative;
+  top: 11px;
+  margin-left: 15px;
+}
