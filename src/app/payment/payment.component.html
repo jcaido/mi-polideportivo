@@ -14,6 +14,13 @@
     </ngx-stripe-elements>
     <mat-error>{{errorMessage}}</mat-error>
     <button mat-raised-button color="primary" (click)="pay()">Pagar</button>
+    @if (isLoading) {
+      <mat-progress-spinner class="spinner"
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [diameter]="30">
+      </mat-progress-spinner>
+    }
   </form>
 </div>
 

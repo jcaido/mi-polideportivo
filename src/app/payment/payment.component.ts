@@ -22,6 +22,8 @@ export class PaymentComponent {
   @Input() dateSelected: any;
   @Input() timeBook: any;
 
+  isLoading: boolean = false;
+
   readonly dialog = inject(MatDialog);
 
   constructor(private fb: FormBuilder, private paymentService: PaymentService) {}
@@ -56,6 +58,7 @@ export class PaymentComponent {
   errorMessage: string = '';
 
   pay() {
+    this.isLoading = true;
     this.errorMessage = '';
     const userName = this.checkOutForm.get('name')?.value;
     this.stripe
@@ -70,6 +73,7 @@ export class PaymentComponent {
           }
           this.paymentService.pay(paymentIntentDto).subscribe(
             data => {
+              this.isLoading = false;
               this.payment = data;
               this.dialog.open(ModalPaymentComponent,
                 {data: {
@@ -84,6 +88,7 @@ export class PaymentComponent {
             }
           )
         } else if (result.error) {
+          this.isLoading = false;
           this.errorMessage = result.error.message!;
         }
       })
