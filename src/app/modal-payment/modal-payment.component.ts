@@ -24,6 +24,8 @@ export class ModalPaymentComponent implements OnInit {
 
   idUser: string = '';
 
+  isLoading: boolean = false;
+
   constructor(
     private paymentService: PaymentService,
     private _snackBar: MatSnackBar,
@@ -42,8 +44,10 @@ export class ModalPaymentComponent implements OnInit {
   }
 
   confirm(id: string, id_available_date_time: string, id_user: string) {
+    this.isLoading = true;
     this.paymentService.confirm(id, id_available_date_time, id_user).subscribe(
       data => {
+        this.isLoading = false;
         this.dialogRef.close();
         this._snackBar.open("Pago confirmado", "Cerrar", {
           duration: 5000
@@ -57,6 +61,7 @@ export class ModalPaymentComponent implements OnInit {
             link.click();
           },
           error => {
+            this.isLoading = false;
             console.error('Error downloading the receipt', error);
           }
         )

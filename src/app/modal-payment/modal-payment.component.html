@@ -10,4 +10,11 @@
 <mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="confirm(data.id, data.idAvailableDateTime, idUser)">Confirmar</button>
   <button mat-raised-button color="primary" (click)="cancel(data.id)" cdkFocusInitial>Cancelar</button>
+  @if (isLoading) {
+    <mat-progress-spinner class="spinner"
+      [color]="'primary'"
+      [mode]="'indeterminate'"
+      [diameter]="30">
+    </mat-progress-spinner>
+  }
 </mat-dialog-actions>
