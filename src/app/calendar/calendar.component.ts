@@ -81,11 +81,11 @@ export class CalendarComponent implements OnInit{
         duration: 5000
       });
     } else {
+      this.paymentFormVisible = false;
       this.selected= selectedDate;
       this.date = this.selected?.toLocaleDateString();
       this.dateAPI = this.date.split("/");
       this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
-      this.paymentFormVisible = false;
       this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
         data => {
           this.timeBookAvailable = data;
