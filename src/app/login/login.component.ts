@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit{
   roles: string[] = [];
   isLoading: boolean = false;
 
-  constructor(private authService: AuthService, private storageService: StorageService, private fb :FormBuilder,private _snackBar: MatSnackBar, private router: Router) {}
+  constructor(private authService: AuthService, private storageService: StorageService, private fb :FormBuilder,private _snackBar: MatSnackBar, private route: Router) {}
 
   formularioLogin = this.fb.group({
     nombre: ['', Validators.required],
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit{
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
         this._snackBar.open("Sesión iniciada con rol/es "+ this.roles, "Cerrar");
-        this.router.navigate(['/information']);
+        window.location.reload();
       },
       error: err => {
         this.isLoading = false;
@@ -53,5 +53,6 @@ export class LoginComponent implements OnInit{
         });
       }
     })
+    this.route.navigate(['/']);
   }
 }
