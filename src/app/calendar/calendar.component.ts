@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { AvailableDateService } from '../_services/available-date.service';
 import { TimeBookService } from '../_services/time-book-service';
@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent implements OnInit{
+export class CalendarComponent {
 
   @Input() idFacility?: string;
   @Input() nameFacility?: string;
@@ -55,35 +55,14 @@ export class CalendarComponent implements OnInit{
     this.selected = new Date();
   }
 
-  ngOnInit(): void {
-    this.availableDateService.getAvailableDatesByFacility(this.idFacility!).subscribe(
-      dates => {
-        this.availableDatesAPI = dates;
-        //console.log(this.availableDatesAPI);
-        //console.log(this.availableDates);
-      });
-
-
-    this.date = this.selected?.toLocaleDateString();
-    this.dateAPI = this.date.split("/");
-    this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
-    this.paymentFormVisible = false;
-    this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
-      data => {
-        this.timeBookAvailable = data;
-      });
-  }
-
   onDateSelected(selectedDate: Date | null): void {
-
-    if (new Date() > selectedDate!) {
+    if(new Date() > selectedDate!) {
       this._snackBar.open("fecha no disponible", "Cerrar", {
         duration: 5000
       });
     } else {
       this.paymentFormVisible = false;
-      this.selected= selectedDate;
-      this.date = this.selected?.toLocaleDateString();
+      this.date = selectedDate?.toLocaleDateString();
       this.dateAPI = this.date.split("/");
       this.dateModify = this.dateAPI[2] + "-" + this.monthDayModify(this.dateAPI[1]) + "-" + this.monthDayModify(this.dateAPI[0]);
       this.timeBookService.getAvailableDateTimeByAvailableDateAndFacility(this.dateModify, this.idFacility!).subscribe(
@@ -91,15 +70,8 @@ export class CalendarComponent implements OnInit{
           this.timeBookAvailable = data;
           this.timesAvailablesVisibled = true;
           this.closeTimesAvailable = true;
-      });
+        });
     }
-  }
-
-  monthDayModify(monthDay: string): string {
-    if (monthDay.length === 1) {
-      return "0" + monthDay;
-    }
-    return monthDay
   }
 
   dateFilter = (date: Date | null): boolean => {
@@ -109,6 +81,13 @@ export class CalendarComponent implements OnInit{
     const time = date.getTime();
     return this.availableDates.some(d => d.getTime() === time);
     //return this.availableDatesAPI.some(d => d.getTime() === time);
+  }
+
+  monthDayModify(monthDay: string): string {
+    if (monthDay.length === 1) {
+      return "0" + monthDay;
+    }
+    return monthDay
   }
 
   timeSelected(id: number, timeBook: any) {
