@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { PaymentIntentDto } from '../payment/payment-intent-dto';
 import { Observable } from 'rxjs';
 
+//const PAYMENT_API = 'http://localhost:8080/api/payment/';
 const PAYMENT_API = 'https://polideportivoh2render.onrender.com/api/payment/';
 
 const httpOptions = {

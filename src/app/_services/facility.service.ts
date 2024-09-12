@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Facility } from '../_helpers/facility';
 
+//const FACILITY_API = 'http://localhost:8080/api/facility/';
 const FACILITY_API = 'https://polideportivoh2render.onrender.com/api/facility/';
 
 const httOptions = {

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
+//const AVAILABLE_DATE_API = 'http://localhost:8080/api/available-date/dates/';
 const AVAILABLE_DATE_API = 'https://polideportivoh2render.onrender.com/api/available-date/dates/';
 
 const httOptions = {
